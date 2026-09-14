@@ -1,0 +1,109 @@
+-- admin
+
+endpoint login (127.0.0.1:2000/toko/login)
+
+menggunakan teknologi JWT
+- POST 
+pengiriman data lewat json dengan isi
+{
+    "username":"",
+    "password":""
+}
+response data
+{
+	"token":""
+}
+
+
+endpoint admin (127.0.0.1:2000/toko/admin)
+
+- POST
+kirim data lewat form data
+
+contoh key
+	"name"
+	"deskripsi" (opsional)
+	"harga"
+	"image" (opsional)
+
+response
+{
+    "data": "nil",
+    "message": "berhasil create data",
+    "status": "success"
+}
+
+- GET
+tanpa ada input atau data yang di kirimkan, format response berupa json
+{
+    "data": [
+        {
+            "Id": ,
+            "name": "",
+            "deskripsi": "",
+            "harga": ,
+            "image": []
+        }
+    ],
+    "message": "berhasil ambil data",
+    "status": "success"
+}
+
+- PUT
+pengiriman data lewat form data
+contoh key
+	"Id"
+	"name"
+	"deskripsi"
+	"harga"
+	
+	tidak usah di sertakan jika tidak ingin di jalankan
+	"delete_image" (opsional jika ingin hapus gambar isi dengan nama gambar yang ingin di hapus)
+	"image" (opsional jika ingin menambahkan gambar)
+
+ketentuan
+- wajib ada id
+- bisa edit (name,deskripsi,harga,gambar(add,delete)) bisa semua dan juga bisa salah satu
+
+- DELETE
+mengirimkan data id ke BE lewat form data dengan key id
+
+user / umum
+
+endpoint search(127.0.0.1:2000/toko/search?key=)
+
+ketentuan pengiriman data melalui URL dengan parameter key
+- bisa search by (product name)
+- contoh data response 
+{
+    "data": [
+        {
+            "Id": ,
+            "name": "",
+            "deskripsi": "",
+            "harga": ,
+            "image": []
+        }
+    ],
+    "message": "data di temukan",
+    "status": "success"
+}
+
+
+endpoint get(127.0.0.1:2000/toko)
+tanpa ada input atau data yang di kirimkan, format response berupa json
+{
+    "data": [
+        {
+            "Id": ,
+            "name": "",
+            "deskripsi": "",
+            "harga": ,
+            "image": []
+        }
+    ],
+    "message": "berhasil ambil data",
+    "status": "success"
+}
+
+$env:Path += ";C:\msys64\ucrt64\bin"

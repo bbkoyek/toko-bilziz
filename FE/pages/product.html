@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semua Produk — Bilziz Sport</title>
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="../css/button.css">
+<link rel="stylesheet" href="../css/modal.css">
+<link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+<div id="navbar"></div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="section-label">Koleksi Kami</div>
+    <div class="section-title">SEMUA<br>PRODUK</div>
+    <p>Jelajahi seluruh peralatan tenis meja yang tersedia. Klik produk untuk langsung memesan.</p>
+  </div>
+</section>
+
+<section class="produk">
+  <div class="container">
+    <form class="produk-toolbar" id="produk-search-form">
+      <input type="text" class="produk-search" id="produk-search" placeholder="Cari produk, mis. bat, bola, meja...">
+      <button type="submit" class="btn-dark">Cari</button>
+    </form>
+    <div class="produk-grid" id="produk-grid">
+      <div class="produk-loading">Memuat produk...</div>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+<div id="wa-float"></div>
+
+<script src="../js/helper.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/validation.js"></script>
+<script src="../js/notification.js"></script>
+<script src="../js/loading.js"></script>
+
+<script src="../component/navbar.js"></script>
+<script src="../component/footer.js"></script>
+
+<script src="../js/pages/product.js"></script>
+</body>
+</html>

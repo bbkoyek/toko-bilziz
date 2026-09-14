@@ -1,0 +1,210 @@
+/* ==========================================================================
+   STYLE.CSS — Bilziz Sport
+   Token warna/font global + gaya untuk section-section utama.
+   ========================================================================== */
+
+:root {
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --gray: #f5f5f5;
+  --gray2: #e5e5e5;
+  --gray3: #aaaaaa;
+  --red: #e63329;
+  --red-dark: #c0281f;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Barlow', sans-serif;
+  --font-cond: 'Barlow Condensed', sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 6rem 2rem;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 8vw, 96px);
+  line-height: 0.95;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+}
+
+/* ============ HERO ============ */
+.hero {
+  margin-top: 60px;
+  background: var(--black);
+  min-height: calc(100vh - 60px);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 2rem;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, #1a0000 0%, #0a0a0a 60%);
+}
+.hero-pattern {
+  position: absolute; inset: 0; opacity: 0.04;
+  background-image: repeating-linear-gradient(0deg, #fff 0px, #fff 1px, transparent 1px, transparent 40px),
+                    repeating-linear-gradient(90deg, #fff 0px, #fff 1px, transparent 1px, transparent 40px);
+}
+.hero-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; width: 100%; }
+.hero-tag {
+  display: inline-block; background: var(--red); color: var(--white);
+  font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  padding: 6px 16px; margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-family: var(--font-display); font-size: clamp(80px, 14vw, 180px);
+  color: var(--white); line-height: 0.9; letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+.hero h1 .outline { -webkit-text-stroke: 2px var(--white); color: transparent; }
+.hero h1 .red { color: var(--red); }
+.hero-sub {
+  font-family: var(--font-cond); font-size: clamp(18px, 3vw, 28px);
+  color: var(--gray3); letter-spacing: 4px; text-transform: uppercase;
+  margin-bottom: 2.5rem; font-weight: 700;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-stat { position: absolute; bottom: 3rem; right: 2rem; z-index: 2; display: flex; gap: 3rem; }
+.stat { text-align: right; }
+.stat-num { font-family: var(--font-display); font-size: 48px; color: var(--white); line-height: 1; }
+.stat-label { font-size: 11px; color: var(--gray3); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+
+/* ============ MARQUEE ============ */
+.marquee-wrap { background: var(--red); padding: 12px 0; overflow: hidden; }
+.marquee-track { display: flex; gap: 3rem; animation: marquee 18s linear infinite; white-space: nowrap; }
+.marquee-item {
+  font-family: var(--font-cond); font-size: 15px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--white); flex-shrink: 0;
+}
+.marquee-dot { color: rgba(255,255,255,0.5); }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ============ PRODUK ============ */
+.produk { background: var(--white); }
+.produk-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
+.produk-header p { color: var(--gray3); font-size: 15px; max-width: 300px; line-height: 1.6; }
+.produk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2px; }
+.produk-card { background: var(--gray); position: relative; overflow: hidden; cursor: pointer; }
+.produk-card:hover .produk-card-inner { transform: scale(1.03); }
+.produk-card-inner { transition: transform 0.4s ease; }
+.produk-visual {
+  height: 280px; display: flex; align-items: center; justify-content: center;
+  font-size: 80px; background: var(--gray); position: relative; overflow: hidden;
+}
+.produk-visual img { width: 100%; height: 100%; object-fit: cover; }
+.produk-card:nth-child(4n+1) .produk-visual { background: #f0f0f0; }
+.produk-card:nth-child(4n+2) .produk-visual { background: #e8e8e8; }
+.produk-card:nth-child(4n+3) .produk-visual { background: #ebebeb; }
+.produk-card:nth-child(4n+4) .produk-visual { background: #e5e5e5; }
+.produk-badge {
+  position: absolute; top: 16px; left: 16px; background: var(--black); color: var(--white);
+  font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px;
+}
+.produk-info { padding: 1.2rem; background: var(--white); border-top: 2px solid var(--gray2); }
+.produk-info h3 { font-family: var(--font-cond); font-size: 20px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.produk-info p { font-size: 13px; color: var(--gray3); margin-top: 4px; }
+.produk-info-row { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
+.produk-tag { font-size: 11px; color: var(--red); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.produk-arrow { font-size: 18px; color: var(--black); font-weight: 700; }
+.produk-empty, .produk-loading, .produk-error {
+  grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: var(--gray3);
+  font-family: var(--font-cond); font-size: 18px; letter-spacing: 1px; text-transform: uppercase;
+}
+.produk-error { color: var(--red); }
+.produk-toolbar { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+.produk-search {
+  flex: 1; min-width: 220px; background: var(--white); border: 1px solid var(--gray2);
+  padding: 14px 18px; font-size: 14px; outline: none;
+}
+.produk-search:focus { border-color: var(--red); }
+
+/* ============ FEATURED BANNER ============ */
+.featured { background: var(--black); padding: 0; }
+.featured-inner { display: grid; grid-template-columns: 1fr 1fr; min-height: 500px; }
+.featured-visual {
+  background: #111; display: flex; align-items: center; justify-content: center;
+  font-size: 120px; position: relative; overflow: hidden;
+}
+.featured-visual::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, transparent 60%, rgba(230,51,41,0.3));
+}
+.featured-text { padding: 4rem; display: flex; flex-direction: column; justify-content: center; }
+.featured-text .section-label { color: var(--red); }
+.featured-text .section-title { color: var(--white); font-size: clamp(40px, 6vw, 80px); }
+.featured-text p { color: var(--gray3); font-size: 16px; line-height: 1.7; margin-bottom: 2rem; max-width: 380px; }
+
+/* ============ GALLERY ============ */
+.gallery { background: var(--gray); }
+.gallery-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 300px 300px; gap: 2px; margin-top: 2rem; }
+.gallery-item {
+  background: var(--gray2); display: flex; align-items: center; justify-content: center;
+  font-size: 60px; position: relative; overflow: hidden; cursor: pointer;
+}
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+.gallery-item:first-child { grid-row: 1 / 3; font-size: 100px; }
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay {
+  position: absolute; inset: 0; background: rgba(0,0,0,0.6);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.3s; z-index: 2;
+}
+.gallery-overlay span {
+  font-family: var(--font-cond); font-size: 16px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--white); text-align: center; padding: 0 1rem;
+}
+
+/* ============ KONTAK ============ */
+.kontak { background: var(--white); }
+.kontak-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; margin-top: 3rem; }
+.kontak-card { background: var(--gray); padding: 2rem; border-bottom: 4px solid transparent; transition: border-color 0.2s; }
+.kontak-card:hover { border-color: var(--red); }
+.kontak-icon { font-size: 32px; margin-bottom: 1rem; }
+.kontak-card h4 { font-family: var(--font-cond); font-size: 18px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+.kontak-card p { font-size: 13px; color: var(--gray3); line-height: 1.6; }
+.kontak-card a { color: var(--black); text-decoration: none; font-weight: 600; font-size: 14px; display: block; margin-top: 8px; }
+.kontak-card a:hover { color: var(--red); }
+
+/* ============ FOOTER ============ */
+footer { background: var(--black); padding: 4rem 2rem 2rem; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid #222; }
+.footer-brand h2 { font-family: var(--font-display); font-size: 36px; color: var(--white); letter-spacing: 3px; }
+.footer-brand h2 span { color: var(--red); }
+.footer-brand p { color: var(--gray3); font-size: 13px; line-height: 1.7; margin-top: 1rem; max-width: 280px; }
+.footer-col h5 { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gray3); margin-bottom: 1rem; }
+.footer-col a { display: block; color: var(--white); text-decoration: none; font-size: 13px; margin-bottom: 8px; transition: color 0.2s; }
+.footer-col a:hover { color: var(--red); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; flex-wrap: wrap; gap: 1rem; }
+.footer-bottom p { color: var(--gray3); font-size: 12px; }
+.footer-sosmed { display: flex; gap: 1rem; }
+.sosmed-link {
+  width: 36px; height: 36px; border: 1px solid #333;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gray3); text-decoration: none; font-size: 13px; font-weight: 700; transition: all 0.2s;
+}
+.sosmed-link:hover { border-color: var(--red); color: var(--red); }
+
+/* ============ PAGE HEADER (untuk halaman selain index) ============ */
+.page-hero {
+  margin-top: 60px; background: var(--black); padding: 5rem 2rem 3rem;
+}
+.page-hero .section-label { color: var(--red); }
+.page-hero .section-title { color: var(--white); margin-bottom: 0.5rem; }
+.page-hero p { color: var(--gray3); font-size: 15px; max-width: 460px; }

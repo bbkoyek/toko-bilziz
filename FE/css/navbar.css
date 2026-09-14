@@ -1,0 +1,54 @@
+/* ==========================================================================
+   NAVBAR.CSS — Bilziz Sport
+   ========================================================================== */
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--black);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 60px;
+}
+.nav-logo {
+  font-family: var(--font-display); font-size: 26px; color: var(--white); letter-spacing: 3px;
+  display: flex; align-items: center; gap: 10px; text-decoration: none;
+}
+.nav-logo span { color: var(--red); }
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-links a {
+  color: var(--gray3); text-decoration: none; font-size: 13px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--white); }
+
+.nav-login-link { display: flex; align-items: center; gap: 6px; cursor: pointer; background: none; border: none; }
+.nav-admin-badge {
+  display: none; align-items: center; gap: 10px;
+  color: var(--white); font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+}
+.nav-admin-badge.show { display: flex; }
+.nav-admin-badge .dot { width: 7px; height: 7px; background: #4ade80; border-radius: 50%; display: inline-block; }
+.nav-logout-btn {
+  background: none; border: 1px solid #333; color: var(--gray3);
+  font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  padding: 6px 12px; cursor: pointer; transition: all 0.2s;
+}
+.nav-logout-btn:hover { border-color: var(--red); color: var(--red); }
+
+.nav-dashboard-btn {
+  background: var(--red); color: var(--white); border: none;
+  font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  padding: 6px 12px; cursor: pointer; text-decoration: none; transition: background 0.2s;
+}
+.nav-dashboard-btn:hover { background: var(--red-dark); }
+
+.nav-search { display: flex; align-items: center; }
+.nav-search input {
+  background: #1a1a1a; border: 1px solid #333; color: var(--white);
+  padding: 6px 10px; font-size: 12px; width: 150px; outline: none;
+}
+.nav-search input:focus { border-color: var(--red); }
+.nav-search button {
+  background: #1a1a1a; border: 1px solid #333; border-left: none;
+  color: var(--gray3); padding: 6px 10px; cursor: pointer;
+}
+.nav-search button:hover { color: var(--white); }

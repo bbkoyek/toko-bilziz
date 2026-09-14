@@ -1,0 +1,36 @@
+/* ==========================================================================
+   TABLE.CSS — Bilziz Sport
+   Dipakai di pages/admin.html untuk tabel data produk.
+   ========================================================================== */
+
+.table-wrap {
+  width: 100%; overflow-x: auto; background: #111; border: 1px solid #222;
+}
+.data-table { width: 100%; border-collapse: collapse; min-width: 640px; }
+.data-table thead th {
+  text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gray3); padding: 14px 16px;
+  border-bottom: 1px solid #262626; background: #161616;
+}
+.data-table tbody td {
+  padding: 14px 16px; font-size: 13px; color: var(--white);
+  border-bottom: 1px solid #1c1c1c; vertical-align: middle;
+}
+.data-table tbody tr:hover { background: #161616; }
+.data-table .cell-thumb {
+  width: 44px; height: 44px; object-fit: cover; background: #222; flex-shrink: 0;
+}
+.data-table .cell-produk { display: flex; align-items: center; gap: 12px; }
+.data-table .cell-harga { color: var(--red); font-weight: 700; white-space: nowrap; }
+.data-table .cell-aksi { display: flex; gap: 8px; white-space: nowrap; }
+.table-empty, .table-loading, .table-error {
+  text-align: center; padding: 3rem 1rem; color: var(--gray3);
+  font-family: var(--font-cond); font-size: 16px; letter-spacing: 1px; text-transform: uppercase;
+}
+.table-error { color: var(--red); }
+
+.table-toolbar {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;
+}
+.table-toolbar h4 { color: var(--white); font-family: var(--font-cond); font-size: 22px; letter-spacing: 1px; text-transform: uppercase; }

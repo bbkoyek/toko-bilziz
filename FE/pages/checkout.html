@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pesan Sekarang — Bilziz Sport</title>
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="../css/button.css">
+<link rel="stylesheet" href="../css/form.css">
+<link rel="stylesheet" href="../css/modal.css">
+<link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+<div id="navbar"></div>
+
+<section class="order" id="pesan">
+  <div class="container">
+    <div class="section-label">Pemesanan</div>
+    <div class="section-title" style="color:var(--white)">PESAN<br>SEKARANG</div>
+    <div class="order-layout">
+      <div class="order-info">
+        <p>Isi formulir pemesanan dan tim kami akan menghubungi kamu via WhatsApp untuk konfirmasi pesanan dan detail pengiriman ke seluruh Indonesia.</p>
+
+        <div class="order-summary empty" id="order-summary">Belum ada produk dipilih. Pilih produk di bawah.</div>
+
+        <div class="order-step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <h4>Isi Formulir</h4>
+            <p>Pilih produk dan isi data dirimu di form sebelah kanan.</p>
+          </div>
+        </div>
+        <div class="order-step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <h4>Konfirmasi WA</h4>
+            <p>Tim kami hubungi kamu via WhatsApp untuk konfirmasi dan info harga.</p>
+          </div>
+        </div>
+        <div class="order-step">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <h4>Pembayaran &amp; Kirim</h4>
+            <p>Bayar dan produk langsung dikirim ke alamatmu.</p>
+          </div>
+        </div>
+      </div>
+      <div class="order-form">
+        <form id="checkout-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nama Lengkap</label>
+              <input type="text" id="f-nama" name="nama" placeholder="Nama kamu">
+              <div class="field-error"></div>
+            </div>
+            <div class="form-group">
+              <label>No. WhatsApp</label>
+              <input type="tel" id="f-wa" name="wa" placeholder="08xxxxxxxxxx">
+              <div class="field-error"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Produk yang Diminati</label>
+            <select id="f-produk" name="produk">
+              <option value="">-- Pilih produk --</option>
+            </select>
+            <div class="field-error"></div>
+          </div>
+          <div class="form-group">
+            <label>Kota / Kabupaten</label>
+            <input type="text" id="f-kota" name="kota" placeholder="Kota tujuan pengiriman">
+            <div class="field-error"></div>
+          </div>
+          <div class="form-group">
+            <label>Pesan / Pertanyaan</label>
+            <textarea id="f-pesan" name="pesan" placeholder="Tulis pertanyaan atau detail pesananmu..."></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="f-submit">Kirim via WhatsApp &#8599;</button>
+          <div class="form-success" id="form-success">
+            <p>&#10003; Pesan dikirim! Tim kami akan segera menghubungi kamu.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+<div id="wa-float"></div>
+
+<script src="../js/helper.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/validation.js"></script>
+<script src="../js/notification.js"></script>
+<script src="../js/loading.js"></script>
+
+<script src="../component/navbar.js"></script>
+<script src="../component/footer.js"></script>
+
+<script src="../js/pages/checkout.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Admin — Bilziz Sport</title>
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="../css/button.css">
+<link rel="stylesheet" href="../css/form.css">
+<link rel="stylesheet" href="../css/table.css">
+<link rel="stylesheet" href="../css/modal.css">
+<link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+<div id="navbar"></div>
+
+<div class="admin-layout">
+  <div id="sidebar"></div>
+
+  <div class="admin-content">
+    <div class="section-label">Panel Admin</div>
+    <div class="section-title">DATA PRODUK</div>
+
+    <div class="table-toolbar">
+      <h4><span id="admin-produk-count">0</span> Produk Terdaftar</h4>
+      <button class="btn-primary" id="btn-tambah-produk">+ Tambah Produk</button>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Produk</th>
+            <th>Deskripsi</th>
+            <th>Harga</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="produk-tbody">
+          <tr><td colspan="4" class="table-loading">Memuat data...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL TAMBAH / UBAH PRODUK -->
+<div class="modal-overlay" id="produk-modal-overlay">
+  <div class="modal-box wide">
+    <button class="modal-close" id="produk-modal-close" aria-label="Tutup">&times;</button>
+    <div class="modal-label">Data Produk</div>
+    <div class="modal-title" id="produk-modal-title">Tambah Produk</div>
+    <div class="modal-error" id="produk-modal-error"></div>
+    <form id="produk-form" novalidate>
+      <div class="form-group">
+        <label>Nama Produk</label>
+        <input type="text" id="pf-name" name="name" placeholder="Mis. Bat Butterfly Timo Boll">
+        <div class="field-error"></div>
+      </div>
+      <div class="form-group">
+        <label>Harga (Rp)</label>
+        <input type="number" id="pf-harga" name="harga" placeholder="Mis. 350000">
+        <div class="field-error"></div>
+      </div>
+      <div class="form-group">
+        <label>Deskripsi</label>
+        <textarea id="pf-deskripsi" name="deskripsi" placeholder="Deskripsi singkat produk"></textarea>
+      </div>
+      <div class="form-group" id="pf-existing-images-group" style="display:none;">
+        <label>Gambar Saat Ini</label>
+        <div class="image-preview-list" id="pf-existing-images"></div>
+        <small>Klik gambar untuk menandai dihapus saat disimpan.</small>
+      </div>
+      <div class="form-group">
+        <label>Tambah Gambar</label>
+        <input type="file" id="pf-image" name="image" accept="image/*">
+        <small>Opsional — kosongkan jika tidak ingin menambah gambar baru.</small>
+      </div>
+      <button type="submit" class="form-submit" id="produk-modal-submit">Simpan Produk</button>
+    </form>
+  </div>
+</div>
+
+<script src="../js/helper.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/validation.js"></script>
+<script src="../js/notification.js"></script>
+<script src="../js/loading.js"></script>
+
+<script src="../component/navbar.js"></script>
+<script src="../component/sidebar.js"></script>
+
+<script src="../js/pages/admin.js"></script>
+</body>
+</html>

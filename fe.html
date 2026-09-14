@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bilziz Sport — Peralatan Tenis Meja</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700;900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #ffffff;
+    --gray: #f5f5f5;
+    --gray2: #e5e5e5;
+    --gray3: #aaaaaa;
+    --red: #e63329;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'Barlow', sans-serif;
+    --font-cond: 'Barlow Condensed', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--white); color: var(--black); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--black);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 60px;
+  }
+  .nav-logo {
+    font-family: var(--font-display); font-size: 26px; color: var(--white); letter-spacing: 3px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-logo span { color: var(--red); }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    color: var(--gray3); text-decoration: none; font-size: 13px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta {
+    background: var(--red); color: var(--white); border: none;
+    padding: 10px 22px; font-family: var(--font-body); font-weight: 700;
+    font-size: 13px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: #c0281f; }
+
+  /* HERO */
+  .hero {
+    margin-top: 60px; background: var(--black);
+    min-height: calc(100vh - 60px);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 4rem 2rem;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, #1a0000 0%, #0a0a0a 60%);
+  }
+  .hero-pattern {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: repeating-linear-gradient(0deg, #fff 0px, #fff 1px, transparent 1px, transparent 40px),
+                      repeating-linear-gradient(90deg, #fff 0px, #fff 1px, transparent 1px, transparent 40px);
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; width: 100%; }
+  .hero-tag {
+    display: inline-block; background: var(--red); color: var(--white);
+    font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    padding: 6px 16px; margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: var(--font-display); font-size: clamp(80px, 14vw, 180px);
+    color: var(--white); line-height: 0.9; letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+  .hero h1 .outline {
+    -webkit-text-stroke: 2px var(--white); color: transparent;
+  }
+  .hero h1 .red { color: var(--red); }
+  .hero-sub {
+    font-family: var(--font-cond); font-size: clamp(18px, 3vw, 28px);
+    color: var(--gray3); letter-spacing: 4px; text-transform: uppercase;
+    margin-bottom: 2.5rem; font-weight: 700;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--white); color: var(--black); border: none;
+    padding: 16px 40px; font-family: var(--font-body); font-weight: 700;
+    font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer;
+    transition: all 0.2s; text-decoration: none; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--red); color: var(--white); }
+  .btn-outline {
+    background: transparent; color: var(--white);
+    border: 2px solid rgba(255,255,255,0.3);
+    padding: 16px 40px; font-family: var(--font-body); font-weight: 700;
+    font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer;
+    transition: all 0.2s; text-decoration: none; display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.05); }
+  .hero-stat {
+    position: absolute; bottom: 3rem; right: 2rem; z-index: 2;
+    display: flex; gap: 3rem;
+  }
+  .stat { text-align: right; }
+  .stat-num { font-family: var(--font-display); font-size: 48px; color: var(--white); line-height: 1; }
+  .stat-label { font-size: 11px; color: var(--gray3); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+
+  /* MARQUEE */
+  .marquee-wrap { background: var(--red); padding: 12px 0; overflow: hidden; }
+  .marquee-track {
+    display: flex; gap: 3rem; animation: marquee 18s linear infinite; white-space: nowrap;
+  }
+  .marquee-item {
+    font-family: var(--font-cond); font-size: 15px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase; color: var(--white); flex-shrink: 0;
+  }
+  .marquee-dot { color: rgba(255,255,255,0.5); }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* SECTION COMMONS */
+  section { padding: 6rem 2rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--red); margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: var(--font-display); font-size: clamp(48px, 8vw, 96px);
+    line-height: 0.95; letter-spacing: 1px; margin-bottom: 2rem;
+  }
+
+  /* PRODUK */
+  .produk { background: var(--white); }
+  .produk-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
+  .produk-header p { color: var(--gray3); font-size: 15px; max-width: 300px; line-height: 1.6; }
+  .produk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2px; }
+  .produk-card {
+    background: var(--gray); position: relative; overflow: hidden;
+    cursor: pointer;
+  }
+  .produk-card:hover .produk-card-inner { transform: scale(1.03); }
+  .produk-card-inner { transition: transform 0.4s ease; }
+  .produk-visual {
+    height: 280px; display: flex; align-items: center; justify-content: center;
+    font-size: 80px; background: var(--gray); position: relative;
+    overflow: hidden;
+  }
+  .produk-visual img { width: 100%; height: 100%; object-fit: cover; }
+  .produk-card:nth-child(4n+1) .produk-visual { background: #f0f0f0; }
+  .produk-card:nth-child(4n+2) .produk-visual { background: #e8e8e8; }
+  .produk-card:nth-child(4n+3) .produk-visual { background: #ebebeb; }
+  .produk-card:nth-child(4n+4) .produk-visual { background: #e5e5e5; }
+  .produk-badge {
+    position: absolute; top: 16px; left: 16px;
+    background: var(--black); color: var(--white);
+    font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    padding: 4px 10px;
+  }
+  .produk-info { padding: 1.2rem; background: var(--white); border-top: 2px solid var(--gray2); }
+  .produk-info h3 { font-family: var(--font-cond); font-size: 20px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .produk-info p { font-size: 13px; color: var(--gray3); margin-top: 4px; }
+  .produk-info-row { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
+  .produk-tag { font-size: 11px; color: var(--red); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .produk-arrow { font-size: 18px; color: var(--black); font-weight: 700; }
+  .produk-empty, .produk-loading, .produk-error {
+    grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: var(--gray3);
+    font-family: var(--font-cond); font-size: 18px; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .produk-error { color: var(--red); }
+
+  /* FEATURED BANNER */
+  .featured { background: var(--black); padding: 0; }
+  .featured-inner {
+    display: grid; grid-template-columns: 1fr 1fr; min-height: 500px;
+  }
+  .featured-visual {
+    background: #111; display: flex; align-items: center; justify-content: center;
+    font-size: 120px; position: relative; overflow: hidden;
+  }
+  .featured-visual::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent 60%, rgba(230,51,41,0.3));
+  }
+  .featured-text {
+    padding: 4rem; display: flex; flex-direction: column; justify-content: center;
+  }
+  .featured-text .section-label { color: var(--red); }
+  .featured-text .section-title { color: var(--white); font-size: clamp(40px, 6vw, 80px); }
+  .featured-text p { color: var(--gray3); font-size: 16px; line-height: 1.7; margin-bottom: 2rem; max-width: 380px; }
+
+  /* GALLERY */
+  .gallery { background: var(--gray); }
+  .gallery-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 300px 300px; gap: 2px; margin-top: 2rem; }
+  .gallery-item {
+    background: var(--gray2); display: flex; align-items: center; justify-content: center;
+    font-size: 60px; position: relative; overflow: hidden; cursor: pointer;
+  }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+  .gallery-item:first-child { grid-row: 1 / 3; font-size: 100px; }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-overlay {
+    position: absolute; inset: 0; background: rgba(0,0,0,0.6);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s; z-index: 2;
+  }
+  .gallery-overlay span {
+    font-family: var(--font-cond); font-size: 16px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase; color: var(--white);
+    text-align: center; padding: 0 1rem;
+  }
+
+  /* FORM PEMESANAN */
+  .order { background: var(--black); }
+  .order .section-title { color: var(--white); }
+  .order .section-label { color: var(--red); }
+  .order-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+  .order-info { }
+  .order-info p { color: var(--gray3); font-size: 15px; line-height: 1.8; margin-bottom: 2rem; }
+  .order-step { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start; }
+  .step-num {
+    width: 36px; height: 36px; background: var(--red); color: var(--white);
+    font-family: var(--font-display); font-size: 20px; display: flex;
+    align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .step-text h4 { color: var(--white); font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+  .step-text p { color: var(--gray3); font-size: 13px; line-height: 1.5; }
+  .order-form { }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label {
+    display: block; font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gray3); margin-bottom: 8px;
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; background: #1a1a1a; border: 1px solid #333;
+    color: var(--white); padding: 14px 16px; font-family: var(--font-body);
+    font-size: 14px; outline: none; transition: border-color 0.2s;
+    -webkit-appearance: none; appearance: none;
+  }
+  .form-group select { cursor: pointer; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--red); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-group small { display: block; margin-top: 6px; color: var(--gray3); font-size: 11px; letter-spacing: 0.5px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-submit {
+    width: 100%; background: var(--red); color: var(--white); border: none;
+    padding: 18px; font-family: var(--font-body); font-weight: 700;
+    font-size: 15px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+    transition: background 0.2s; margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: #c0281f; }
+  .form-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+  .form-success {
+    display: none; background: #0a2a0a; border: 1px solid #1a6a1a;
+    padding: 1.5rem; text-align: center; margin-top: 1rem;
+  }
+  .form-success p { color: #4ade80; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+
+  /* WHATSAPP */
+  .wa-float {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+    display: flex; flex-direction: column; align-items: flex-end; gap: 12px;
+  }
+  .wa-tooltip {
+    background: var(--black); color: var(--white);
+    padding: 10px 16px; font-size: 13px; font-weight: 600;
+    letter-spacing: 0.5px; white-space: nowrap; opacity: 0;
+    transform: translateX(10px); transition: all 0.3s; pointer-events: none;
+  }
+  .wa-float:hover .wa-tooltip { opacity: 1; transform: translateX(0); }
+  .wa-btn {
+    width: 60px; height: 60px; background: #25d366;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    transition: transform 0.2s; text-decoration: none;
+    animation: pulse-wa 2s infinite;
+  }
+  .wa-btn:hover { transform: scale(1.1); }
+  .wa-btn svg { width: 28px; height: 28px; fill: white; }
+  @keyframes pulse-wa {
+    0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 4px 30px rgba(37,211,102,0.7); }
+  }
+
+  /* KONTAK */
+  .kontak { background: var(--white); }
+  .kontak-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; margin-top: 3rem; }
+  .kontak-card {
+    background: var(--gray); padding: 2rem;
+    border-bottom: 4px solid transparent; transition: border-color 0.2s;
+  }
+  .kontak-card:hover { border-color: var(--red); }
+  .kontak-icon { font-size: 32px; margin-bottom: 1rem; }
+  .kontak-card h4 { font-family: var(--font-cond); font-size: 18px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .kontak-card p { font-size: 13px; color: var(--gray3); line-height: 1.6; }
+  .kontak-card a { color: var(--black); text-decoration: none; font-weight: 600; font-size: 14px; display: block; margin-top: 8px; }
+  .kontak-card a:hover { color: var(--red); }
+
+  /* FOOTER */
+  footer { background: var(--black); padding: 4rem 2rem 2rem; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid #222; }
+  .footer-brand h2 { font-family: var(--font-display); font-size: 36px; color: var(--white); letter-spacing: 3px; }
+  .footer-brand h2 span { color: var(--red); }
+  .footer-brand p { color: var(--gray3); font-size: 13px; line-height: 1.7; margin-top: 1rem; max-width: 280px; }
+  .footer-col h5 { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gray3); margin-bottom: 1rem; }
+  .footer-col a { display: block; color: var(--white); text-decoration: none; font-size: 13px; margin-bottom: 8px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--red); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; flex-wrap: wrap; gap: 1rem; }
+  .footer-bottom p { color: var(--gray3); font-size: 12px; }
+  .footer-sosmed { display: flex; gap: 1rem; }
+  .sosmed-link {
+    width: 36px; height: 36px; border: 1px solid #333;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gray3); text-decoration: none; font-size: 13px; font-weight: 700;
+    transition: all 0.2s;
+  }
+  .sosmed-link:hover { border-color: var(--red); color: var(--red); }
+
+  /* NAV LOGIN STATE */
+  .nav-login-link { display: flex; align-items: center; gap: 6px; cursor: pointer; background: none; border: none; }
+  .nav-admin-badge {
+    display: none; align-items: center; gap: 10px;
+    color: var(--white); font-size: 12px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+  .nav-admin-badge .dot { width: 7px; height: 7px; background: #4ade80; border-radius: 50%; display: inline-block; }
+  .nav-logout-btn {
+    background: none; border: 1px solid #333; color: var(--gray3);
+    font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    padding: 6px 12px; cursor: pointer; transition: all 0.2s;
+  }
+  .nav-logout-btn:hover { border-color: var(--red); color: var(--red); }
+
+  /* LOGIN MODAL */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 300;
+    background: rgba(10,10,10,0.75);
+    align-items: center; justify-content: center; padding: 1.5rem;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--black); border: 1px solid #222;
+    width: 100%; max-width: 380px; padding: 2.5rem 2rem;
+    position: relative;
+  }
+  .modal-close {
+    position: absolute; top: 1rem; right: 1rem;
+    background: none; border: none; color: var(--gray3);
+    font-size: 22px; line-height: 1; cursor: pointer; padding: 4px;
+  }
+  .modal-close:hover { color: var(--white); }
+  .modal-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--red); margin-bottom: 0.5rem;
+  }
+  .modal-title {
+    font-family: var(--font-display); font-size: 36px; color: var(--white);
+    letter-spacing: 1px; margin-bottom: 1.8rem;
+  }
+  .modal-error {
+    display: none; background: #2a0a0a; border: 1px solid #6a1a1a;
+    color: #f87171; font-size: 13px; padding: 10px 14px; margin-bottom: 1rem;
+  }
+  .modal-success {
+    display: none; background: #0a2a0a; border: 1px solid #1a6a1a;
+    color: #4ade80; font-size: 13px; padding: 10px 14px; margin-bottom: 1rem;
+    font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero h1 { font-size: 64px; }
+    .hero-stat { position: static; margin-top: 3rem; justify-content: flex-start; }
+    .featured-inner { grid-template-columns: 1fr; }
+    .featured-visual { height: 250px; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-item:first-child { grid-row: auto; grid-column: 1 / 3; height: 280px; }
+    .order-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">BILZIZ <span>SPORT</span></div>
+  <div class="nav-links">
+    <a href="#produk">Produk</a>
+    <a href="#galeri">Galeri</a>
+    <a href="#pesan">Pesan</a>
+    <a href="#kontak">Kontak</a>
+    <a class="nav-login-link" id="nav-login-link" href="javascript:void(0)" onclick="openLoginModal()">Login</a>
+  </div>
+  <div class="nav-admin-badge" id="nav-admin-badge">
+    <span class="dot"></span>
+    <span id="nav-admin-name">Admin</span>
+    <button class="nav-logout-btn" onclick="logoutAdmin()">Logout</button>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('pesan').scrollIntoView({behavior:'smooth'})">Pesan Sekarang</button>
+</nav>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="login-modal-overlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeLoginModal()" aria-label="Tutup">&times;</button>
+    <div class="modal-label">Area Admin</div>
+    <div class="modal-title">LOGIN</div>
+    <div class="modal-error" id="login-error"></div>
+    <div class="modal-success" id="login-success">&#10003; Login berhasil!</div>
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" id="login-username" placeholder="Username admin" autocomplete="username">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="login-password" placeholder="Password" autocomplete="current-password">
+    </div>
+    <button class="form-submit" id="login-submit" onclick="submitLogin()">Masuk</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-tag">&#9733; Spesialis Tenis Meja Indonesia</div>
+    <h1>
+      BILZIZ<br>
+      <span class="outline">SPORT</span><br>
+      <span class="red">2019</span>
+    </h1>
+    <div class="hero-sub">Peralatan Tenis Meja &mdash; Kelas Atas</div>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#produk">Lihat Produk</a>
+      <a class="btn-outline" href="#pesan">Pesan via WA</a>
+    </div>
+  </div>
+  <div class="hero-stat">
+    <div class="stat">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">Tahun Berdiri</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="stat-produk-count">—</div>
+      <div class="stat-label">Produk Tersedia</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">ID</div>
+      <div class="stat-label">Seluruh Indonesia</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Bat Tenis Meja</span><span class="marquee-dot">&#9632;</span>
+    <span class="marquee-item">Bola Tenis Meja</span><span class="marquee-dot">&#9632;</span>
+    <span class="marquee-item">Meja Tenis</span><span class="marquee-dot">&#9632;</span>
+    <span class="marquee-item">Tas Bat</span><span class="marquee-dot">&#9632;</span>
+    <span class="marquee-item">Pengiriman Seluruh Indonesia</span><span class="marquee-dot">&#9632;</span>
+    <span class="marquee-item">Bilziz Sport</span><span class="marquee-dot">&#9632;</span>
+    <span class="marquee-item">Bat Tenis Meja</span><span class="marquee-dot">&#9632;</span>
+    <span class="marquee-item">Bola Tenis Meja</span><span class="marquee-dot">&#9632;</span>
+    <span class="marquee-item">Meja Tenis</span><span class="marquee-dot">&#9632;</span>
+    <span class="marquee-item">Tas Bat</span><span class="marquee-dot">&#9632;</span>
+    <span class="marquee-item">Pengiriman Seluruh Indonesia</span><span class="marquee-dot">&#9632;</span>
+    <span class="marquee-item">Bilziz Sport</span><span class="marquee-dot">&#9632;</span>
+  </div>
+</div>
+
+<!-- PRODUK -->
+<section class="produk" id="produk">
+  <div class="container">
+    <div class="produk-header">
+      <div>
+        <div class="section-label">Koleksi Kami</div>
+        <div class="section-title">PRODUK<br>UNGGULAN</div>
+      </div>
+      <p>Semua produk dipilih untuk kualitas terbaik, cocok untuk pemula hingga atlet profesional.</p>
+    </div>
+    <div class="produk-grid" id="produk-grid">
+      <div class="produk-loading">Memuat produk...</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED BANNER -->
+<section class="featured">
+  <div class="featured-inner">
+    <div class="featured-visual">🏓</div>
+    <div class="featured-text">
+      <div class="section-label">Mengapa Bilziz Sport</div>
+      <div class="section-title">KUALITAS<br>TANPA<br>KOMPROMI</div>
+      <p>Kami hadir sejak 2019 untuk memastikan setiap pemain tenis meja mendapatkan peralatan terbaik. Dari bat hingga meja — semua ada di sini.</p>
+      <a class="btn-primary" href="#pesan">Pesan Sekarang</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALERI -->
+<section class="gallery" id="galeri">
+  <div class="container">
+    <div class="section-label">Galeri</div>
+    <div class="section-title">LIHAT<br>KOLEKSI</div>
+    <div class="gallery-grid" id="gallery-grid">
+      <div class="produk-loading">Memuat galeri...</div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM PEMESANAN -->
+<section class="order" id="pesan">
+  <div class="container">
+    <div class="section-label">Pemesanan</div>
+    <div class="section-title" style="color:var(--white)">PESAN<br>SEKARANG</div>
+    <div class="order-layout">
+      <div class="order-info">
+        <p>Isi formulir pemesanan dan tim kami akan menghubungi kamu via WhatsApp untuk konfirmasi pesanan dan detail pengiriman ke seluruh Indonesia.</p>
+        <div class="order-step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <h4>Isi Formulir</h4>
+            <p>Pilih produk dan isi data dirimu di form sebelah kanan.</p>
+          </div>
+        </div>
+        <div class="order-step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <h4>Konfirmasi WA</h4>
+            <p>Tim kami hubungi kamu via WhatsApp untuk konfirmasi dan info harga.</p>
+          </div>
+        </div>
+        <div class="order-step">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <h4>Pembayaran &amp; Kirim</h4>
+            <p>Bayar dan produk langsung dikirim ke alamatmu.</p>
+          </div>
+        </div>
+      </div>
+      <div class="order-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nama Lengkap</label>
+            <input type="text" id="f-nama" placeholder="Nama kamu">
+          </div>
+          <div class="form-group">
+            <label>No. WhatsApp</label>
+            <input type="tel" id="f-wa" placeholder="08xxxxxxxxxx">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Produk yang Diminati</label>
+          <select id="f-produk">
+            <option value="">-- Pilih produk --</option>
+          </select>
+          <small id="f-produk-harga"></small>
+        </div>
+        <div class="form-group">
+          <label>Kota / Kabupaten</label>
+          <input type="text" id="f-kota" placeholder="Kota tujuan pengiriman">
+        </div>
+        <div class="form-group">
+          <label>Pesan / Pertanyaan</label>
+          <textarea id="f-pesan" placeholder="Tulis pertanyaan atau detail pesananmu..."></textarea>
+        </div>
+        <button class="form-submit" id="f-submit" onclick="kirimPesan()">Kirim via WhatsApp &#8599;</button>
+        <div class="form-success" id="form-success">
+          <p>&#10003; Pesan dikirim! Tim kami akan segera menghubungi kamu.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAK -->
+<section class="kontak" id="kontak">
+  <div class="container">
+    <div class="section-label">Hubungi Kami</div>
+    <div class="section-title">KONTAK &amp;<br>LOKASI</div>
+    <div class="kontak-grid">
+      <div class="kontak-card">
+        <div class="kontak-icon">📱</div>
+        <h4>WhatsApp</h4>
+        <p>Hubungi langsung untuk info produk dan harga</p>
+        <a href="https://wa.me/6287803440181" target="_blank">087803440181</a>
+      </div>
+      <div class="kontak-card">
+        <div class="kontak-icon">📧</div>
+        <h4>Email</h4>
+        <p>Untuk pertanyaan resmi dan kerjasama</p>
+        <a href="mailto:bilzizsport112@gmail.com">bilzizsport112@gmail.com</a>
+      </div>
+      <div class="kontak-card">
+        <div class="kontak-icon">📸</div>
+        <h4>Instagram</h4>
+        <p>Follow untuk update produk terbaru</p>
+        <a href="https://instagram.com/bilzizsport" target="_blank">@bilzizsport</a>
+      </div>
+      <div class="kontak-card">
+        <div class="kontak-icon">🎵</div>
+        <h4>TikTok</h4>
+        <p>Tonton video produk dan review kami</p>
+        <a href="https://tiktok.com/@bilzizsport" target="_blank">@bilzizsport</a>
+      </div>
+      <div class="kontak-card">
+        <div class="kontak-icon">📍</div>
+        <h4>Lokasi</h4>
+        <p>Kampung Dukuh, Jakarta Timur</p>
+        <a href="https://maps.google.com/?q=Kampung+Dukuh+Jakarta+Timur" target="_blank">Lihat di Maps →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h2>BILZIZ <span>SPORT</span></h2>
+        <p>Spesialis peralatan tenis meja terpercaya sejak 2019. Melayani seluruh Indonesia dengan produk berkualitas tinggi.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Produk</h5>
+        <a href="#produk">Lihat Semua Produk</a>
+      </div>
+      <div class="footer-col">
+        <h5>Ikuti Kami</h5>
+        <a href="https://instagram.com/bilzizsport" target="_blank">Instagram</a>
+        <a href="https://tiktok.com/@bilzizsport" target="_blank">TikTok</a>
+        <a href="https://wa.me/6287803440181" target="_blank">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Bilziz Sport. All rights reserved. Jakarta Timur, Indonesia.</p>
+      <div class="footer-sosmed">
+        <a class="sosmed-link" href="https://instagram.com/bilzizsport" target="_blank">IG</a>
+        <a class="sosmed-link" href="https://tiktok.com/@bilzizsport" target="_blank">TK</a>
+        <a class="sosmed-link" href="https://wa.me/6287803440181" target="_blank">WA</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<div class="wa-float">
+  <div class="wa-tooltip">Chat langsung via WhatsApp</div>
+  <a class="wa-btn" href="https://wa.me/6287803440181?text=Halo%20Bilziz%20Sport,%20saya%20ingin%20menanyakan%20produk%20tenis%20meja" target="_blank">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+</div>
+
+<script>
+// ================== KONFIGURASI BACKEND ==================
+// Sesuaikan API_BASE jika backend di-deploy ke domain/port lain.
+<!-- const API_BASE = 'https://kfw3bfr4-2000.asse.devtunnels.ms/toko';
+const API_BASEimg = 'https://kfw3bfr4-2000.asse.devtunnels.ms/img'; -->
+const API_BASE = 'http:127.0.0.1/toko';
+const API_BASEimg = 'http://127.0.0.1:2000/img';
+const WA_NUMBER = '6287803440181';
+
+let allProducts = [];
+
+// ================== LOGIN ADMIN (JWT) ==================
+// Token disimpan di memori JS saja (bukan localStorage), jadi akan hilang
+// kalau halaman di-refresh — cukup untuk kebutuhan modal login saat ini.
+let authToken = null;
+let loggedInUsername = null;
+
+function openLoginModal() {
+  document.getElementById('login-error').style.display = 'none';
+  document.getElementById('login-success').style.display = 'none';
+  document.getElementById('login-username').value = '';
+  document.getElementById('login-password').value = '';
+  document.getElementById('login-modal-overlay').classList.add('open');
+}
+
+function closeLoginModal() {
+  document.getElementById('login-modal-overlay').classList.remove('open');
+}
+
+async function submitLogin() {
+  const username = document.getElementById('login-username').value.trim();
+  const password = document.getElementById('login-password').value;
+  const errorBox = document.getElementById('login-error');
+  const successBox = document.getElementById('login-success');
+  const submitBtn = document.getElementById('login-submit');
+
+  errorBox.style.display = 'none';
+  successBox.style.display = 'none';
+
+  if (!username || !password) {
+    errorBox.textContent = 'Mohon isi username dan password.';
+    errorBox.style.display = 'block';
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Memproses...';
+
+  try {
+    const res = await fetch(`${API_BASE}/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password })
+    });
+    const json = await res.json();
+    console.log("json : "+json);
+
+    if (!res.ok || !json.token) {
+      throw new Error(json.message || 'Username atau password salah.');
+    }
+
+    authToken = json.token;
+    loggedInUsername = username;
+
+    successBox.style.display = 'block';
+    setTimeout(() => {
+      closeLoginModal();
+      updateAdminUI();
+    }, 700);
+  } catch (err) {
+    errorBox.textContent = err.message || 'Gagal login. Pastikan server backend berjalan.';
+    errorBox.style.display = 'block';
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Masuk';
+  }
+}
+
+function logoutAdmin() {
+  authToken = null;
+  loggedInUsername = null;
+  updateAdminUI();
+}
+
+function updateAdminUI() {
+  const loginLink = document.getElementById('nav-login-link');
+  const badge = document.getElementById('nav-admin-badge');
+  const nameEl = document.getElementById('nav-admin-name');
+  if (authToken) {
+    loginLink.style.display = 'none';
+    badge.style.display = 'flex';
+    nameEl.textContent = loggedInUsername;
+  } else {
+    loginLink.style.display = '';
+    badge.style.display = 'none';
+  }
+}
+
+// Tutup modal saat klik area luar modal-box
+document.addEventListener('DOMContentLoaded', () => {
+  const overlay = document.getElementById('login-modal-overlay');
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeLoginModal();
+  });
+});
+
+function formatHarga(harga) {
+  if (harga === null || harga === undefined || harga === '') return '';
+  const num = Number(harga);
+  if (Number.isNaN(num)) return String(harga);
+  return 'Rp' + num.toLocaleString('id-ID');
+}
+
+// Backend mengembalikan "image" sebagai array (nama file). Fungsi ini
+// menormalkan ke satu URL gambar siap pakai, atau null jika kosong
+// sehingga tampilan bisa fallback ke ikon.
+function firstImageUrl(images) {
+  if (!Array.isArray(images) || images.length === 0) return null;
+  const first = images[0];
+  if (!first) return null;
+  if (/^https?:\/\//i.test(first) || first.startsWith('/') || first.startsWith('data:')) {
+    return first;
+  }
+  // Asumsi file gambar disajikan backend di /toko/uploads/<nama file>.
+  // Sesuaikan path ini jika backend menyajikan gambar dengan cara berbeda.
+  return `${API_BASEimg}/${first}`;
+}
+
+function escapeHtml(str) {
+  if (str === null || str === undefined) return '';
+  const div = document.createElement('div');
+  div.textContent = String(str);
+  return div.innerHTML;
+}
+
+function produkCardHTML(p) {
+  const imgUrl = firstImageUrl(p.image);
+  const visual = imgUrl
+    ? `<img src="${imgUrl}" alt="${escapeHtml(p.name)}" onerror="this.remove()">`
+    : `🏓`;
+  const harga = formatHarga(p.harga);
+  return `
+    <div class="produk-card" data-id="${p.Id}">
+      <div class="produk-card-inner">
+        <div class="produk-visual">${visual}</div>
+        <div class="produk-info">
+          <h3>${escapeHtml(p.name)}</h3>
+          <p>${escapeHtml(p.deskripsi || 'Peralatan tenis meja berkualitas')}</p>
+          <div class="produk-info-row">
+            <span class="produk-tag">${harga || 'Hubungi kami'}</span>
+            <span class="produk-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderProdukGrid(products) {
+  const grid = document.getElementById('produk-grid');
+  if (!products.length) {
+    grid.innerHTML = '<div class="produk-empty">Belum ada produk tersedia saat ini.</div>';
+    return;
+  }
+  grid.innerHTML = products.map(produkCardHTML).join('');
+
+  grid.querySelectorAll('.produk-card').forEach((card) => {
+    card.addEventListener('click', () => {
+      const id = card.getAttribute('data-id');
+      const produk = allProducts.find((p) => String(p.Id) === String(id));
+      document.getElementById('pesan').scrollIntoView({ behavior: 'smooth' });
+      if (produk) selectProdukInForm(produk.name);
+    });
+  });
+}
+
+function renderGallery(products) {
+  const grid = document.getElementById('gallery-grid');
+  if (!products.length) {
+    grid.innerHTML = '<div class="produk-empty">Belum ada galeri untuk ditampilkan.</div>';
+    return;
+  }
+  // Tampilkan hingga 5 produk pertama pada layout galeri (1 besar + 4 kecil)
+  const items = products.slice(0, 5);
+  grid.innerHTML = items.map((p) => {
+    const imgUrl = firstImageUrl(p.image);
+    const visual = imgUrl
+      ? `<img src="${imgUrl}" alt="${escapeHtml(p.name)}" onerror="this.remove()">`
+      : `🏓`;
+    return `
+      <div class="gallery-item" data-id="${p.Id}">
+        ${visual}
+        <div class="gallery-overlay"><span>${escapeHtml(p.name)}</span></div>
+      </div>
+    `;
+  }).join('');
+
+  grid.querySelectorAll('.gallery-item').forEach((item) => {
+    item.addEventListener('click', () => {
+      const id = item.getAttribute('data-id');
+      const produk = allProducts.find((p) => String(p.Id) === String(id));
+      document.getElementById('pesan').scrollIntoView({ behavior: 'smooth' });
+      if (produk) selectProdukInForm(produk.name);
+    });
+  });
+}
+
+function renderProdukSelect(products) {
+  const select = document.getElementById('f-produk');
+  const current = select.value;
+  select.innerHTML = '<option value="">-- Pilih produk --</option>' +
+    products.map((p) => `<option value="${escapeHtml(p.name)}" data-id="${p.Id}" data-harga="${p.harga ?? ''}">${escapeHtml(p.name)}</option>`).join('');
+  if (current) select.value = current;
+}
+
+document.getElementById('f-produk').addEventListener('change', (e) => {
+  const opt = e.target.options[e.target.selectedIndex];
+  const harga = opt ? opt.getAttribute('data-harga') : '';
+  document.getElementById('f-produk-harga').textContent = harga ? `Harga: ${formatHarga(harga)}` : '';
+});
+
+function selectProdukInForm(nama) {
+  const select = document.getElementById('f-produk');
+  select.value = nama;
+  select.dispatchEvent(new Event('change'));
+}
+
+// ================== AMBIL DATA PRODUK DARI BACKEND ==================
+async function muatProduk() {
+  const grid = document.getElementById('produk-grid');
+  const galeri = document.getElementById('gallery-grid');
+  try {
+    const res = await fetch(`${API_BASE}`, { method: 'GET' });
+    if (!res.ok) throw new Error('Gagal mengambil data produk (' + res.status + ')');
+    const json = await res.json();
+    if (json.status !== 'success') throw new Error(json.message || 'Gagal mengambil data produk');
+
+    allProducts = Array.isArray(json.data) ? json.data : [];
+    renderProdukGrid(allProducts);
+    renderGallery(allProducts);
+    renderProdukSelect(allProducts);
+
+    const countEl = document.getElementById('stat-produk-count');
+    if (countEl) countEl.textContent = allProducts.length;
+  } catch (err) {
+    console.error(err);
+    grid.innerHTML = `<div class="produk-error">Gagal memuat produk. Pastikan server backend berjalan di ${API_BASE}.</div>`;
+    galeri.innerHTML = `<div class="produk-error">Gagal memuat galeri.</div>`;
+  }
+}
+
+// ================== PENCARIAN PRODUK (endpoint /toko/search?key=) ==================
+// Bisa dipanggil dari kotak pencarian jika ditambahkan nanti, mis:
+// cariProduk(document.getElementById('search-box').value)
+async function cariProduk(keyword) {
+  try {
+    const res = await fetch(`${API_BASE}/search?key=${encodeURIComponent(keyword)}`);
+    const json = await res.json();
+    if (json.status !== 'success') throw new Error(json.message || 'Pencarian gagal');
+    allProducts = Array.isArray(json.data) ? json.data : [];
+    renderProdukGrid(allProducts);
+    renderGallery(allProducts);
+    renderProdukSelect(allProducts);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+// ================== FORM PEMESANAN -> WHATSAPP ==================
+function kirimPesan() {
+  const nama = document.getElementById('f-nama').value.trim();
+  const wa = document.getElementById('f-wa').value.trim();
+  const produkSelect = document.getElementById('f-produk');
+  const produk = produkSelect.value;
+  const produkOpt = produkSelect.options[produkSelect.selectedIndex];
+  const harga = produkOpt ? produkOpt.getAttribute('data-harga') : '';
+  const kota = document.getElementById('f-kota').value.trim();
+  const pesan = document.getElementById('f-pesan').value.trim();
+
+  if (!nama || !wa || !produk) {
+    alert('Mohon lengkapi nama, nomor WhatsApp, dan produk yang diminati.');
+    return;
+  }
+
+  const hargaText = harga ? formatHarga(harga) : '-';
+
+  // Pesan WA sekarang menyertakan produk yang benar-benar dipilih user
+  // (nama produk + harga terbaru dari backend), bukan lagi data dummy.
+  const lines = [
+    `Halo Bilziz Sport! 🏓`,
+    ``,
+    `*Nama:* ${nama}`,
+    `*No. WA:* ${wa}`,
+    `*Produk:* ${produk}`,
+    `*Harga:* ${hargaText}`,
+    `*Kota:* ${kota || '-'}`,
+    `*Pesan:* ${pesan || '-'}`,
+    ``,
+    `Terima kasih!`
+  ];
+  const msg = encodeURIComponent(lines.join('\n'));
+  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
+
+  document.getElementById('form-success').style.display = 'block';
+  setTimeout(() => { document.getElementById('form-success').style.display = 'none'; }, 5000);
+}
+
+muatProduk();
+</script>
+</body>
+</html>
