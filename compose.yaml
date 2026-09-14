@@ -6,10 +6,10 @@ services:
     restart: unless-stopped
 
     environment:
-      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_ROOT_PASSWORD: ****
       MYSQL_DATABASE: toko_bilziz
-      MYSQL_USER: toko
-      MYSQL_PASSWORD: toko123
+      MYSQL_USER: ******
+      MYSQL_PASSWORD: *****
 
     volumes:
       - mysql_data:/var/lib/mysql
@@ -29,12 +29,12 @@ services:
     environment:
       DB_HOST: mysql
       DB_PORT: 3306
-      DB_USER: toko
-      DB_PASSWORD: toko123
-      DB_NAME: golang_api
+      DB_USER: *****
+      DB_PASSWORD: ****
+      DB_NAME: toko-bilziz
 
     ports:
-      - "2026:2026"
+      - "2000:2000"
 
     depends_on:
       - mysql
