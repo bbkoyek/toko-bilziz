@@ -49,6 +49,11 @@ func CreateProduct(p models.Products,r *http.Request,w http.ResponseWriter) (err
 }
 func SaveImg(id int64, r *http.Request) (error){
 	err := r.ParseMultipartForm(20 << 10)
+	err = helpers.CekFolder()
+	if err != nil{
+		return err
+	}
+
 
 	if err != nil {
 		return errors.New("file tidak sesuai")

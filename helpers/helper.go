@@ -6,6 +6,7 @@ import (
 	"image"
 	"math/big"
 	"os"
+	"path"
 
 	"github.com/chai2010/webp"
 )
@@ -30,6 +31,24 @@ func CreateImg(folder string,name string,img image.Image)(error){
 	err = os.WriteFile(path,data,0664)
 	if err != nil{
 		return err
+	}
+	return nil
+}
+
+func CekFolder()(error){
+	pathRoot := "upload"
+	subFolder := []string{"medium","original","thumnail"}
+	for _,sub := range subFolder{
+		targetPath := path.Join(pathRoot,sub)
+		if _,err := os.Stat(targetPath);os.IsNotExist(err){
+			err := os.MkdirAll(targetPath,os.ModePerm)
+			if err != nil{
+				return err
+			}
+			return nil
+		}else{
+			return nil
+		}
 	}
 	return nil
 }
