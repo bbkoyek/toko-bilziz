@@ -1,4 +1,4 @@
-FROM golang:1.25
+FROM golang:1.24
 
 WORKDIR /app
 
@@ -8,8 +8,6 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o toko .
+EXPOSE 2000
 
-EXPOSE 2026
-
-CMD ["./toko"]
+CMD ["./server"]

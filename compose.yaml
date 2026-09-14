@@ -1,23 +1,5 @@
 services:
 
-  mysql:
-    image: mysql:8.0
-    container_name: toko-mysql
-    restart: unless-stopped
-
-    environment:
-      MYSQL_ROOT_PASSWORD: ****
-      MYSQL_DATABASE: toko_bilziz
-      MYSQL_USER: ******
-      MYSQL_PASSWORD: *****
-
-    volumes:
-      - mysql_data:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
-
-    networks:
-      - toko-network
-
   backend:
     build:
       context: .
@@ -31,7 +13,7 @@ services:
       DB_PORT: 3306
       DB_USER: *****
       DB_PASSWORD: ****
-      DB_NAME: toko-bilziz
+      DB_NAME: web_bilziz
 
     ports:
       - "2000:2000"
@@ -42,13 +24,12 @@ services:
     networks:
       - toko-network
 
-
   frontend:
     build:
       context: ./FE
       dockerfile: Dockerfile
 
-    container_name: toko-frontend
+    container_name: toko-bilziz-frontend
     restart: unless-stopped
 
     ports:
@@ -60,10 +41,12 @@ services:
     networks:
       - toko-network
 
+    volumes:
+      - mysql_data
 
-volumes:
-  mysql_data:
+    networks:
+      - toko-network
 
-
-networks:
+  networks:
   toko-network:
+    external: true
