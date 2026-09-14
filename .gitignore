@@ -1,0 +1,14 @@
+#node
+FE/node_modules
+
+#Environment
+.env
+
+#VSCode
+.vscode/
+
+img/
+
+upload/**/*
+
+!upload/**/.gitkeep
