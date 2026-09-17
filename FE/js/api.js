@@ -6,11 +6,15 @@
 
 require('dotenv').config();
 
+const HOST = process.env.BASE_API;
+const PORT = process.env.PORT;
+const NO = process.env.NO_WA;
+
 // const SERVER_BASE = 'https://kfw3bfr4-2000.asse.devtunnels.ms';
-const SERVER_BASE = 'http://127.0.0.1:2000';
+const SERVER_BASE = `${HOST}:${PORT}`;
 const API_BASE = `${SERVER_BASE}/toko`;
 const ADMIN_BASE = `${API_BASE}/admin`;
-const WA_NUMBER = '6287803440181';
+const WA_NUMBER = `${NO}`;
 
 const Api = {
   /** Ambil semua produk. GET /toko */

@@ -35,6 +35,11 @@ services:
     ports:
       - "8080:80"
 
+    environment:
+      BASE_API = 100.93.69.96
+      PORT = 2000
+      NO_WA = 6287803440181
+
     depends_on:
       - backend
 
